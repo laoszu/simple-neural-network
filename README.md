@@ -6,21 +6,15 @@ The XOR problem was chosen, because it's the simplest introduction to the MLP co
 I decided to use SDL with C++, because ~~I like suffering~~ it wanted to try something new as well. ~~...Aand I got over-C-ed during my univeristy course 😊~~.
 
 # Background
+MLP (<b>m</b>ulti<b>l</b>ayer <b>p</b>erceptron) is a type of neural network composed of an input layer, one or more hidden layers, and an output layer. The hidden layers consist of neurons based on the McCulloch-Pitts mathematical model.
 
-MLP (<b>m</b>ulti<b>l</b>ayer <b>p</b>erceptron) is 
+Each neuron (except those in the input layer) uses an activation function to introduce non-linearity. I chose the *tanh* function because it is symmetric around zero - unlike the sigmoid function, which tends to push outputs toward 0.5. With tanh, I noticed improved convergence during training.
 
-The whole network contains an input layer, a hidden layer (modifiable) and an output layer. The hidden layer contains neurons that implement the McCulloch-Pitts mathematical model.
+The training process starts with forward propagation (also called feed-forward), where inputs move through the network using randomly initialized weights to compute outputs. The output is then compared to the expected result to compute the error. This is followed by backward propagation, where the error is used to update the weights in a way that reduces the overall loss.
 
-Each neuron in the non-input layers has an "activation function". I chose the tanh function because its values are symmetrical around 0 --- I noticed that the training doesn't converge to 0.5 all the time, as it did with the sigmoid function.
-
-Training starts with **forward propagation** (also known as feed-forward). It goes through the entire network, calculating the values of the new neurons, with randomly generated weights between them, to reach the output layer. Then the error is calculated (result in the output layer minus the expected output set) and then the **backward propagation** through the network happens: the weights are adjusted accordingly. After a bunch of tests, the network correctly "guesses" the correct result.
-
-I added bias neurons to each layer to shift the values to better fit the network to the training data.
+I also included bias neurons in each layer to help shift activation values, allowing the network to better fit the training data.
 
 # How to run?
-> "Fast!"
-
-> \-Jonek
 ```
 git clone https://github.com/dziobex/simple-neural-network.git
 cd simple-neural-network
